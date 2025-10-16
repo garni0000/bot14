@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  chatId: {
-    type: Number,
-    required: true,
-    unique: true,
-    index: true // Pour accélérer les recherches
-  },
+  chatId: { type: Number, required: true, unique: true, index: true },
   firstName: { type: String, default: '' },
   username: { type: String, default: '' },
 
@@ -35,12 +30,8 @@ const userSchema = new mongoose.Schema({
 
   lastMessageTime: { type: Date, default: Date.now },
 
-  // Au lieu de 3 champs séparés → tableau flexible
   scheduledFollowups: [
-    {
-      stage: { type: String, enum: ['followup_1', 'followup_2', 'followup_3'] },
-      date: { type: Date }
-    }
+    { stage: { type: String, enum: ['followup_1', 'followup_2', 'followup_3'] }, date: { type: Date } }
   ],
 
   linkSent: { type: Boolean, default: false },
@@ -49,14 +40,12 @@ const userSchema = new mongoose.Schema({
   vipUnlocked: { type: Boolean, default: false },
   channelsJoined: { type: Boolean, default: false },
 
-  // Pour tracking / fidélité
   referrerId: { type: Number, default: null },
 
   createdAt: { type: Date, default: Date.now },
   lastInteraction: { type: Date, default: Date.now }
 });
 
-// Middleware pour mise à jour auto de lastInteraction
 userSchema.pre('save', function(next) {
   this.lastInteraction = new Date();
   next();
