@@ -1,3 +1,4 @@
+// models/User.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -21,12 +22,7 @@ const userSchema = new mongoose.Schema({
   },
 
   hasResponded: { type: Boolean, default: false },
-
-  responseType: {
-    type: String,
-    enum: ['positive', 'negative', 'none'],
-    default: 'none'
-  },
+  responseType: { type: String, enum: ['positive', 'negative', 'none'], default: 'none' },
 
   lastMessageTime: { type: Date, default: Date.now },
 
