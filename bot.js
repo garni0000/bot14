@@ -90,7 +90,7 @@ function attachHandlers() {
         try {
           await bot.sendVideo(chatId, process.env.VIDEO_START, {
             reply_markup: {
-              inline_keyboard: [[{ text: '🔥 Rejoindre le canal', url: process.env.CHANNEL_VIP || 'https://t.me/+tPrtqmEX7otiMmM0' }]]
+              inline_keyboard: [[{ text: '🔥 Rejoindre le canal✅', url: process.env.CHANNEL_VIP || 'https://t.me/+40KEvV2NTuo3NmY0' }]]
             }
           });
           console.log(`📹 Vidéo start envoyée à ${firstName} (${chatId})`);
